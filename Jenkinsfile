@@ -12,7 +12,15 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Building stuff'
+                echo 'Testing stuff'
+                nodejs('chrisnode') {
+                    sh 'npm test'
+                }
+            }
+        }
+        stage('Sonar') {
+            steps {
+                echo 'Scanning stuff'
                 nodejs('chrisnode') {
                     sh 'npm test'
                 }
